@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<ui:composition template="/templates/template.xhtml">
+	<ui:define name="body">
+		
+		<h:panelGroup id="panel" columns="1">
+			<h2>Lista de Pagamentos</h2>
+			<div style="width: 355px">
+				<div style="position: relative; float: left;">
+					<h:outputLabel id="b2wOrderLabel" for="b2wOrder" value="Identificador da Ordem: " />
+				</div>
+				<div style="float: right;">
+					<h:inputText id="b2wOrder" value="#{orderMBean.b2wOrderId}" />
+				</div>
+				
+			</div>
+			<br />
+			<div style="width: 375px; padding-top: 10px;">
+				<div style="float: left;">
+					<h:outputLabel id="dateLabel" for="calendar" value="Data: " />
+				</div>
+				<div style="float: right;">
+					<a4j:outputPanel>
+						<rich:calendar value="#{orderMBean.date}" id="calendar" popup="true"
+							datePattern="dd/MM/yyyy" showApplyButton="true" cellWidth="24px"
+							cellHeight="22px" style="width:200px">
+						</rich:calendar>
+					</a4j:outputPanel>
+					<div style="padding-left: 20px; padding-top: 10px;">
+						<h:commandButton style="width:120px;" id="buscar" value="Buscar" action="#{orderMBean.buscar}" />
+					</div>
+				</div>
+								
+			</div>
+		
+		</h:panelGroup>
+		
+		<div style="clear: both; padding-top: 40px;">	
+		<rich:dataTable id="ordersTbl" value="#{orderMBean.orders}" var="order"  rows="10">
+			<f:facet name="header">
+				<h:outputText value="Ordens" />
+			</f:facet>
+			<rich:column>
+				<f:facet name="header">Identificador</f:facet>
+				<h:outputText value="#{order.b2wPaymentOrder.b2wOrderId}" />
+			</rich:column>
+			<rich:column>
+				<f:facet name="header">Data</f:facet>
+				<h:outputText value="#{order.statusChanged}" />
+			</rich:column>
+			<rich:column>
+				<f:facet name="header">Status</f:facet>
+				<h:outputText value="#{order.status}" />
+			</rich:column>
+			<rich:column>
+				<f:facet name="header">Sucesso</f:facet>
+				<h:outputText value="#{order.success? 'Sim' : 'Não'}" />
+			</rich:column>			
+			<rich:column>
+				<f:facet name="header">Enviado</f:facet>
+				<h:outputText value="#{order.b2wPaymentOrder.sent? 'Sim' : 'Não'}" />
+			</rich:column>
+			<f:facet name="footer">
+				<rich:dataScroller maxPages="50"/>
+			</f:facet>	
+		</rich:dataTable>
+		</div>		
+	</ui:define>
+</ui:composition>
+
+
+</html>

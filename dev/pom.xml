@@ -1,0 +1,195 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.com.videosoft.techtalk.gae</groupId>
+	<artifactId>gae</artifactId>
+	<packaging>pom</packaging>
+	<name>Videosoft - Techtalk - Google App Engine</name>
+	<version>1.0</version>
+
+	<properties>
+	        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.version>3.0.5.RELEASE</spring.version>
+		<hibernate.version>3.3.1.GA</hibernate.version>
+	</properties>
+
+	<modules>
+		<module>gae-util</module>
+		<module>gae-domain</module>
+		<module>gae-services</module>
+		<module>gae-web</module>
+	</modules>
+
+	<organization>
+		<name>Videosoft</name>
+		<url>http://www.videosoft.com.br/</url>
+	</organization>
+
+	<repositories>
+		<!-- JBoss repo has Icefaces deps -->
+		<repository>
+			<id>jboss</id>
+			<name>JBOSSREPO</name>
+			<url>http://repository.jboss.com/maven2/</url>
+		</repository>
+		<repository>
+			<id>jboss-public</id>
+			<name>JBOSSREPO PUBLIC</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
+		</repository>
+		<repository>
+			<id>openqa.org (releases)</id>
+			<name>Openqa Release Repository</name>
+			<url>http://nexus.openqa.org/content/repositories/releases</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+		<repository>
+			<id>openqa.org (snapshots)</id>
+			<name>Openqa Snapshot Repository</name>
+			<url>http://nexus.openqa.org/content/repositories/snapshots</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+				<checksumPolicy>ignore</checksumPolicy>
+			</snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+	</repositories>
+
+	<developers>
+		<developer>
+			<id>renan.tateoka</id>
+			<name>Renan Tateoka</name>
+			<email>renan.tateoka@videosoft.com.br</email>
+			<organization>Videosoft</organization>
+			<organizationUrl>http://www.videosoft.com.br/</organizationUrl>
+		</developer>
+		<developer>
+			<id>fillipi.pelz</id>
+			<name>Fillipi Pelz</name>
+			<email>fillipi.pelz@videosoft.com.br</email>
+			<organization>Videosoft</organization>
+			<organizationUrl>http://www.videosoft.com.br/</organizationUrl>
+		</developer>
+	</developers>
+
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>1.2.14</version>
+				<scope>compile</scope>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>1.4.2</version>
+			</dependency>
+			<dependency>
+				<groupId>javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>3.8.0.GA</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-cglib-repack</artifactId>
+				<version>2.1_3</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-entitymanager</artifactId>
+				<version>3.3.1.ga</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.hibernate</groupId>
+						<artifactId>hibernate-validator</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-ehcache</artifactId>
+				<version>${hibernate.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.ehcache</groupId>
+				<artifactId>ehcache</artifactId>
+				<version>1.3.0</version>
+			</dependency>
+			<!-- In JBoss4.2 this must be 'provided' -->
+			<dependency>
+				<groupId>javax.transaction</groupId>
+				<artifactId>jta</artifactId>
+				<version>1.1</version>
+				<scope>compile</scope>
+			</dependency>
+			
+			<dependency>
+				<groupId>commons-dbcp</groupId>
+				<artifactId>commons-dbcp</artifactId>
+				<version>1.2.2</version>
+				<scope>compile</scope>
+				<exclusions>
+					<exclusion>
+						<groupId>javax.sql</groupId>
+						<artifactId>jdbc-stdext</artifactId>
+					</exclusion>
+					<exclusion>
+						<artifactId>jdbc</artifactId>
+						<groupId>jdbc</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>xerces</artifactId>
+						<groupId>xerces</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>xml-apis</artifactId>
+						<groupId>xml-apis</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>2.4</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>1.7.0</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>3.2.1</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.persistence</groupId>
+				<artifactId>persistence-api</artifactId>
+				<version>1.0</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>commons-digester</groupId>
+				<artifactId>commons-digester</artifactId>
+				<version>1.8</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+</project>

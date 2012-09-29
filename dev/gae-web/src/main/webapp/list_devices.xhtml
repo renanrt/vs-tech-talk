@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<ui:composition  template="/templates/template.xhtml">
+	<ui:define name="body">	
+		<rich:dataTable value="#{listDevicesMBean.devices}" var="st">
+			 <f:facet name="header">
+			 	 <h:outputText value="Status do sistema" />
+			 </f:facet>
+			  <rich:column>
+		        <f:facet name="header">Dispositivo</f:facet>
+		        	 <h:outputText value="#{st.name}"/>
+		      </rich:column>
+
+		      <rich:column>
+		        <f:facet name="header">Status</f:facet>
+		        	 <h:outputText value="#{st.status ? 'Ok' : 'Fail'}"/>
+		      </rich:column>
+			  <rich:column>
+		        <f:facet name="header">Mensagem</f:facet>
+		        	 <h:outputText value="#{st.description!=null ? st.description : '---'}" />
+		      </rich:column>
+		</rich:dataTable>
+	</ui:define>
+</ui:composition>
+
+</html>

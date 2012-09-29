@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<ui:composition  template="/templates/template.xhtml">
+	<ui:define name="body">	
+	
+	<div class="indent">
+                    	<div class="wrapper">
+                        	<article class="col-1">
+                            	<div class="indent-left">
+                                	<h3>Contact Form</h3>
+                                    <div class="p3">
+                                    
+								        <f:view>  	
+								        
+								        
+								        <h:form id="contact-form" >
+												
+                                            <fieldset>
+                                         	         <label>
+                                                  		<span class="text-form">Full Name:</span>
+                                                  		<h:inputText name="p1" value="#{contactsMBean.fullName}"/>
+                                                  		
+                                                  </label>
+                                                  <label>
+                                                  		<span class="text-form">E-mail:</span>
+                                                  		
+                                                  		<h:inputText  name="p2" value="#{contactsMBean.email}" >
+										                 </h:inputText>
+                                                  </label>                              
+                                                  <div class="wrapper">
+                                                    <div class="text-form">Message:</div>
+                                                    <div class="extra-wrap">
+                                                        
+                                                        <h:inputTextarea >
+														  <f:validateLength maximum="100"></f:validateLength>
+														</h:inputTextarea>
+                                                        
+                                                        <div class="clear"></div>
+                                                        <div class="buttons">
+                                                 			
+                                                 			           
+                                                            <h:button value="Clear" class="button-1" action="#{contactsMBean.clear}"/>
+												            <a4j:commandButton value="Say Hello" execute="@form" action="#{contactsMBean.send}"/>
+                                                            
+                                                        </div> 
+                                                    </div>
+                                                  </div>                            
+                                            </fieldset>						
+										</h:form>
+										</f:view>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>                                  
+      </ui:define>
+</ui:composition>
+
+</html>

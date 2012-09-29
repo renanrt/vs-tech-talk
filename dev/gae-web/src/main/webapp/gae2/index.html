@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/reset.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/layout.css" type="text/css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Adamina' rel='stylesheet' type='text/css'>   
+    <script src="js/jquery-1.6.3.min.js" type="text/javascript"></script>
+    <script src="js/cufon-yui.js" type="text/javascript"></script>
+    <script src="js/cufon-replace.js" type="text/javascript"></script>
+    <script src="js/Lobster_13_400.font.js" type="text/javascript"></script>
+    <script src="js/NewsGoth_BT_400.font.js" type="text/javascript"></script>
+    <script src="js/FF-cash.js" type="text/javascript"></script>
+    <script src="js/easyTooltip.js" type="text/javascript"></script>
+	<script src="js/script.js" type="text/javascript"></script>
+    <script src="js/bgSlider.js" type="text/javascript"></script>
+    <script src="js/jquery.easing.1.3.js" type="text/javascript"></script>
+    <script src="js/tms-0.3.js" type="text/javascript"></script>
+    <script src="js/tms_presets.js" type="text/javascript"></script>
+</head>
+<body id="page1">
+	<div id="bgSlider"></div>
+    <div class="bg_spinner"></div>
+	<div class="extra">
+        <!--==============================header=================================-->
+        <header>
+        	<div class="top-row">
+            	<div class="main">
+                	<div class="wrapper">
+                        <h1><a href="index.html">GoodCook</a></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-row">
+            	<div class="menu-border">
+                	<div class="main">
+                        <nav>
+                            <ul class="menu">
+                                <li><a class="active" href="index.html">Main</a></li>
+                                <li class="last"><a href="contacts.html">Inscreva-se</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+			
+        </header>
+        <!--==============================content================================-->
+        <div class="inner">
+            <div class="main">
+                <section id="content">
+                    <div class="slider">
+                        <ul class="items">
+                            <li>
+                                <img src="images/slider-img1.png" alt="" />
+                                <div class="banner">
+                                    <strong class="title">
+                                        <em>Google App Engine</em>
+                                    </strong>
+                                    <p class="p3">Introdução ao PaaS (Plattaform As A Service) do Google. Faça deploy de uma aplicação web em minutos	</p>
+                                    <a class="button-1" href="#">Inscreva-se</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <div class="block"></div>
+            </div>
+        </div>
+    </div>
+	<!--==============================footer=================================-->
+    <footer>
+    	<div class="padding">
+        	<div class="main">
+                <div class="wrapper">
+                	<div class="fleft footer-text">
+                        <strong>Powered by <a rel="nofollow" class="link" target="_blank" href="http://www.videosoft.com.br/">Videosoft.com.br</a></strong>
+                        <!-- {%FOOTER_LINK} -->
+                    </div>
+                    <ul class="list-services">
+                    	<li>Link to Us:</li>
+                    	<li><a class="tooltips" title="facebook" href="#"></a></li>
+                        <li class="item-1"><a class="tooltips" title="twitter" href="#"></a></li>
+                        <li class="item-2"><a class="tooltips" title="linkedin" href="#"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript"> Cufon.now(); </script>
+    <script type="text/javascript">
+		$(window).load(function() {
+			$('.slider')._TMS({
+				duration:1000,
+				easing:'easeOutQuart',
+				preset:'simpleFade',
+				slideshow:10000,
+				banners:'fade',
+				pauseOnHover:true,
+				waitBannerAnimation:false,
+				pagination:'.pags'
+			});
+		});
+    </script>
+</body>
+</html>

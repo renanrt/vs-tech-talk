@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.com.videosoft.techtalk.gae</groupId>
+	<artifactId>gae-domain</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0</version>
+	<name>Videosoft - Techtalk - Google App Engine - Domain</name>
+
+	<parent>
+		<groupId>br.com.videosoft.techtalk.gae</groupId>
+		<artifactId>gae</artifactId>
+		<version>1.0</version>
+		<relativePath>..</relativePath>
+	</parent>
+
+	<dependencies>
+
+		<!-- app engine sdk -->
+		<dependency>
+			<groupId>com.google.appengine</groupId>
+			<artifactId>appengine-api-1.0-sdk</artifactId>
+			<version>1.7.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>br.com.videosoft.techtalk.gae</groupId>
+			<artifactId>gae-util</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.datanucleus</groupId>
+				<artifactId>maven-datanucleus-plugin</artifactId>
+				<version>3.1.0-release</version>
+
+				<dependencies>
+					<dependency>
+						<groupId>org.datanucleus</groupId>
+						<artifactId>datanucleus-api-jpa</artifactId>
+						<version>3.1.0-release</version>
+						<!-- <scope>provided</scope> -->
+					</dependency>
+
+					<dependency>
+						<groupId>org.datanucleus</groupId>
+						<artifactId>datanucleus-api-jdo</artifactId>
+						<version>3.0.3</version>
+						<!-- <scope>provided</scope> -->
+					</dependency>
+					<dependency>
+						<groupId>javax.jdo</groupId>
+						<artifactId>jdo-api</artifactId>
+						<version>3.0</version>
+						<!-- <scope>provided</scope> -->
+					</dependency>
+
+				</dependencies>
+
+
+				<configuration>
+					<!-- Make sure this path contains your persistent classes! -->
+					<verbose>true</verbose>
+					<api>JPA</api>
+					<persistenceUnit>transactions-optional</persistenceUnit>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>enhance</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+	</build>
+	
+</project>
